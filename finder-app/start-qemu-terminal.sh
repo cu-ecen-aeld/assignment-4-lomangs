@@ -4,7 +4,11 @@
 
 set -e
 
+echo "QEMU Terminal"
+
 OUTDIR=$1
+
+echo "OUTDIR: ${OUTDIR}"
 
 if [ -z "${OUTDIR}" ]; then
     OUTDIR=/tmp/aeld
