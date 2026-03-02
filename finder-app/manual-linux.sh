@@ -2,7 +2,6 @@
 # Script outline to install and build kernel.
 # Author: Siddhant Jajoo.
 
-echo $(pwd)
 set -e
 set -u
 
@@ -13,6 +12,9 @@ BUSYBOX_VERSION=1_33_1
 FINDER_APP_DIR=$(realpath $(dirname $0))
 ARCH=arm64
 CROSS_COMPILE=aarch64-none-linux-gnu-
+CURRDIR=$(pwd)
+
+echo "CURRDIR: ${CURRDIR}"
 
 if [ $# -lt 1 ]
 then
@@ -97,6 +99,7 @@ sudo mknod -m 600 ${OUTDIR}/rootfs/dev/console c 5 1
 
 # TODO: Clean and build the writer utility
 #cd $HOME/coursera/buildroot/assignments-3-and-later-lomangs/finder-app
+cd ${CURRDIR}
 make clean
 make NEED_CROSS_COMPILE=1
 cp writer ${OUTDIR}/rootfs/home
